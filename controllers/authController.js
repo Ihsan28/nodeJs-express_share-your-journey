@@ -8,7 +8,8 @@ async function register(req, res) {
         const { username, email, password } = req.body;
         const user = new User({ username, email, password });
         await user.save();
-        res.json({ message: 'User registered successfully', user: user. });
+
+        res.json({ message: 'User registered successfully', user: user.toJSON()._id });
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
